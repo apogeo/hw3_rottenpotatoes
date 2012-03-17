@@ -18,7 +18,11 @@ end
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.content  is the entire content of the page as a string.
-  assert false, "Unimplmemented"
+  re = /#{e1}.*#{e2}/m
+  #puts re.inspect
+  #puts page.source
+  #puts re.match(page.source).inspect
+  assert re.match(page.source), "Was expecting to see #{e1} before #{e2}"
 end
 
 # Make it easier to express checking or unchecking several boxes at once
